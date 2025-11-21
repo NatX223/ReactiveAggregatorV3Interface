@@ -5,7 +5,7 @@ import '../lib/reactive-lib/src/interfaces/ISystemContract.sol';
 import '../lib/reactive-lib/src/abstract-base/AbstractPausableReactive.sol';
 import '../lib/reactive-lib/src/interfaces/IReactive.sol';
 
-contract Reactive is IReactive, AbstractPausableReactive {
+contract AggReactive is IReactive, AbstractPausableReactive {
 
     uint64 private constant GAS_LIMIT = 1000000;
     address public chainService;
