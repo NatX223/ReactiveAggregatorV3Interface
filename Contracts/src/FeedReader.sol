@@ -12,7 +12,7 @@ contract FeedReader is AbstractCallback {
     address indexed aggregatorAddress,
     int256 indexed answer,
     string description,
-    uint256 roundId,
+    uint80 roundId,
     uint256 decimals,
     uint256 startedAt,
     uint256 updatedAt,
