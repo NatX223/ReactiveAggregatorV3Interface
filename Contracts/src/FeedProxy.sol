@@ -3,56 +3,63 @@ pragma solidity ^0.8.7;
 
 import '../lib/reactive-lib/src/abstract-base/AbstractCallback.sol';
 contract FeedProxy is AbstractCallback {
-    struct FeedData {
-        address aggregatorAddress;
-        int256 answer;
-        string description;
-        uint80 roundId;
-        uint256 decimals;
-        uint256 startedAt;
-        uint256 updatedAt;
-        uint256 version;
-    }
+
+    address public aggregatorAddress;
+    int256 public answer;
+    string public description_;
+    uint80 public roundId;
+    uint256 public decimals_;
+    uint256 public startedAt;
+    uint256 public updatedAt;
+    uint256 public version;
 
     event feedReceived(uint80 roundId, int256 answer);
-
-    FeedData public latestFeedData;
 
     constructor(address _service) AbstractCallback(_service) payable {
 
     }
 
     // ========== CALLBACK ENTRY ==========
-    function callback(address sender, FeedData calldata data) external authorizedSenderOnly rvmIdOnly(sender) {
-        latestFeedData = data;
+    function callback(address sender, address _aggregatorAddress, int256 _answer, string memory _description, uint80 _roundId, uint256 _decimals, uint256 _startedAt, uint256 _updatedAt, uint256 _version) external authorizedSenderOnly rvmIdOnly(sender) {
+
+        aggregatorAddress = _aggregatorAddress;
+        answer = _answer;
+        description_ = _description;
+        roundId = _roundId;
+        decimals_ = _decimals;
+        startedAt = _startedAt;
+        updatedAt = _updatedAt;
+        version = _version;
+
+        emit feedReceived(roundId, answer);
     }
 
     // ========== AGGREGATORV3 COMPAT ==========
     function decimals() external view returns (uint8) {
-        return uint8(latestFeedData.decimals);
+        return uint8(decimals_);
     }
 
     function description() external view returns (string memory) {
-        return latestFeedData.description;
+        return description_;
     }
 
     function latestRoundData()
         external
         view
         returns (
-            uint80 roundId,
-            int256 answer,
-            uint256 startedAt,
-            uint256 updatedAt,
-            uint80 answeredInRound
+            uint80,
+            int256,
+            uint256,
+            uint256,
+            uint80
         )
     {
         return (
-            latestFeedData.roundId,
-            latestFeedData.answer,
-            latestFeedData.startedAt,
-            latestFeedData.updatedAt,
-            latestFeedData.roundId
+            roundId,
+            answer,
+            startedAt,
+            updatedAt,
+            roundId
         );
     }
 }

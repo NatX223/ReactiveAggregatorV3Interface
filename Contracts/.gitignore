@@ -17,5 +17,6 @@ docs/
 tests
 src/test
 src/callback/factory
+src/DummyAggregator.sol
 
 lib

@@ -11,7 +11,7 @@ contract FeedReader is AbstractCallback {
   event feedRead(
     address indexed aggregatorAddress,
     int256 indexed answer,
-    string description,
+    string indexed description,
     uint80 roundId,
     uint256 decimals,
     uint256 startedAt,

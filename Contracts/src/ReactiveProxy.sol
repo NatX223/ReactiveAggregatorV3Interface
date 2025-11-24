@@ -1,17 +1,16 @@
 // SPDX-License-Identifier: UNLICENSED
 pragma solidity ^0.8.13;
 
-import '../lib/reactive-lib/src/interfaces/ISystemContract.sol';
-import '../lib/reactive-lib/src/abstract-base/AbstractPausableReactive.sol';
-import '../lib/reactive-lib/src/interfaces/IReactive.sol';
+import "../lib/reactive-lib/src/interfaces/ISystemContract.sol";
+import "../lib/reactive-lib/src/abstract-base/AbstractPausableReactive.sol";
+import "../lib/reactive-lib/src/interfaces/IReactive.sol";
 
 contract ReactiveProxy is IReactive, AbstractPausableReactive {
-
     uint64 private constant GAS_LIMIT = 1000000;
     address public chainService;
     uint256 private chainId;
     uint256 private eventTopic0;
-    
+
     address public feedProxy;
     address public feedReader;
 
@@ -32,7 +31,13 @@ contract ReactiveProxy is IReactive, AbstractPausableReactive {
         uint256 indexed value
     );
 
-    constructor(address _feedProxy, address _feedReader, uint256 _eventTopic0, uint256 _chainId, address _service) payable {
+    constructor(
+        address _feedProxy,
+        address _feedReader,
+        uint256 _eventTopic0,
+        uint256 _chainId,
+        address _service
+    ) payable {
         feedProxy = _feedProxy;
         feedReader = _feedReader;
         chainService = _service;
@@ -40,11 +45,23 @@ contract ReactiveProxy is IReactive, AbstractPausableReactive {
         chainId = _chainId;
         service = ISystemContract(payable(_service));
         if (!vm) {
-            service.subscribe(_chainId, _feedReader, _eventTopic0, REACTIVE_IGNORE, REACTIVE_IGNORE, REACTIVE_IGNORE);
+            service.subscribe(
+                _chainId,
+                _feedReader,
+                _eventTopic0,
+                REACTIVE_IGNORE,
+                REACTIVE_IGNORE,
+                REACTIVE_IGNORE
+            );
         }
     }
 
-    function getPausableSubscriptions() internal view override returns (Subscription[] memory) {
+    function getPausableSubscriptions()
+        internal
+        view
+        override
+        returns (Subscription[] memory)
+    {
         Subscription[] memory result = new Subscription[](1);
         result[0] = Subscription(
             chainId,
@@ -69,40 +86,27 @@ contract ReactiveProxy is IReactive, AbstractPausableReactive {
             uint256 updatedAt,
             uint256 version
         ) = abi.decode(
-            log.data,
-            (string,uint80,uint256,uint256,uint256,uint256)
-        );
-
-        FeedData memory fd = FeedData({
-            aggregatorAddress: aggregatorAddress,
-            answer: answer,
-            description: description,
-            roundId: roundId,
-            decimals: decimals,
-            startedAt: startedAt,
-            updatedAt: updatedAt,
-            version: version
-        });
+                log.data,
+                (string, uint80, uint256, uint256, uint256, uint256)
+            );
 
         bytes memory payload = abi.encodeWithSignature(
-            "callback(address,(address,int256,string,uint256,uint256,uint256,uint256,uint256))",
+            "callback(address,address,int256,string,uint80,uint256,uint256,uint256,uint256)",
             address(0),
-            fd
+            aggregatorAddress,
+            answer,
+            description,
+            roundId,
+            decimals,
+            startedAt,
+            updatedAt,
+            version
         );
 
-        emit Callback(
-            chainId,
-            feedProxy,
-            GAS_LIMIT,
-            payload
-        );
+        emit Callback(chainId, feedProxy, GAS_LIMIT, payload);
     }
 
     receive() external payable override(AbstractPayer, IPayer) {
-        emit Received(
-            tx.origin,
-            msg.sender,
-            msg.value
-        );
+        emit Received(tx.origin, msg.sender, msg.value);
     }
 }
