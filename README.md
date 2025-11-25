@@ -32,12 +32,21 @@ Source Chain                           Reactive Network                 Destinat
 
 | Contract | Purpose | Address |
 |----------|---------|----------|
-| **DummyAggregator** | Mock Chainlink price feed for testing(for local testing purposes) | `` |
 | **Chainlink price feed - BTC/USD** | chainlink price aggregator on Sepolia | `0x1b44F3514812d835EB1BDB0acB33d3fA3351Ee43` |
 | **AggReactive** | Event monitor for price updates(AnswerUpdated event) from the price feed aggregator contract | `` |
 | **FeedReader** | Extracts price feed data from aggregators and emits the feedRead event | `` |
 | **ReactiveProxy** | Event monitor for price reading(feedRead event) from the feedReader contract, calls calback on feedProxy | `` |
 | **FeedProxy** | Destination chain price feed data storage via callback, aggregatorV3interface compatible read functions | `` |
+
+### Transactions
+
+| Contract | function/event | transaction hash |
+|----------|---------|----------|
+| **Chainlink price feed - BTC/USD** | AnswerUpdated event | `` |
+| **AggReactive** | Reacting to AnswerUpdated event | `` |
+| **FeedReader** | Callback - reading price feed data from aggregators and emitting feedRead event | `` |
+| **ReactiveProxy** | Reacting to feedRead event and calling callback event for FeedProxy callback | `` |
+| **FeedProxy** | Callback - storing price feed data | `` |
 
 ### Deployment Scripts
 

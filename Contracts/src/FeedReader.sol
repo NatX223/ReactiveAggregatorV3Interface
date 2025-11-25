@@ -9,11 +9,11 @@ contract FeedReader is AbstractCallback {
     AggregatorV3Interface internal dataFeed;
 
     /* Address of the price feed aggregator contract being monitored */
-    address public aggregatorAddress;
+    address public aggregatorProxy;
 
     /*
      * Event emitted when price feed data is successfully read and processed
-     * @param aggregatorAddress Address of the price feed aggregator
+     * @param aggregatorProxy Address of the price feed proxy
      * @param answer The latest price answer from the feed
      * @param description Human-readable description of the price pair
      * @param roundId Unique identifier for the price update round
@@ -23,7 +23,7 @@ contract FeedReader is AbstractCallback {
      * @param version Version number of the aggregator contract
      */
     event feedRead(
-        address indexed aggregatorAddress,
+        address indexed aggregatorProxy,
         int256 indexed answer,
         string indexed description,
         uint80 roundId,
@@ -36,15 +36,15 @@ contract FeedReader is AbstractCallback {
     /*
      * Initializes the FeedReader with a specific price feed aggregator to monitor.
      * Sets up the connection to both the aggregator and the reactive system service.
-     * @param _aggregatorAddress Address of the Chainlink-compatible price feed aggregator
+     * @param _aggregatorProxy Address of the Chainlink-compatible price feed aggregator
      * @param _service Address of the reactive system service for callback management
      */
     constructor(
-        address _aggregatorAddress,
+        address _aggregatorProxy,
         address _service
     ) payable AbstractCallback(_service) {
-        aggregatorAddress = _aggregatorAddress;
-        dataFeed = AggregatorV3Interface(_aggregatorAddress);
+        aggregatorProxy = _aggregatorProxy;
+        dataFeed = AggregatorV3Interface(_aggregatorProxy);
     }
 
     /*
@@ -63,7 +63,7 @@ contract FeedReader is AbstractCallback {
 
         ) = dataFeed.latestRoundData();
         emit feedRead(
-            aggregatorAddress,
+            aggregatorProxy,
             answer,
             dataFeed.description(),
             roundId,

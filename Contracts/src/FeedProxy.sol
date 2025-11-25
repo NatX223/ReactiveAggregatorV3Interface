@@ -4,8 +4,8 @@ pragma solidity ^0.8.7;
 import '../lib/reactive-lib/src/abstract-base/AbstractCallback.sol';
 contract FeedProxy is AbstractCallback {
 
-    /* Address of the source price feed aggregator contract */
-    address public aggregatorAddress;
+    /* Address of the source price feed aggregator proxy */
+    address public aggregatorProxy;
     
     /* Latest price answer received from the feed (with decimal precision) */
     int256 public answer;
@@ -48,7 +48,7 @@ contract FeedProxy is AbstractCallback {
      * Callback function that receives and stores price feed data from the reactive system.
      * Updates all internal state variables with the latest feed information.
      * @param sender Address of the contract that initiated the callback (must be authorized)
-     * @param _aggregatorAddress Address of the source price feed aggregator
+     * @param _aggregatorProxy Address of the source price feed aggregator proxy
      * @param _answer Latest price answer from the feed
      * @param _description Human-readable description of the price pair
      * @param _roundId Unique identifier for this price update round
@@ -57,9 +57,9 @@ contract FeedProxy is AbstractCallback {
      * @param _updatedAt Timestamp when the price was last updated
      * @param _version Version number of the source aggregator contract
      */
-    function callback(address sender, address _aggregatorAddress, int256 _answer, string memory _description, uint80 _roundId, uint256 _decimals, uint256 _startedAt, uint256 _updatedAt, uint256 _version) external authorizedSenderOnly rvmIdOnly(sender) {
+    function callback(address sender, address _aggregatorProxy, int256 _answer, string memory _description, uint80 _roundId, uint256 _decimals, uint256 _startedAt, uint256 _updatedAt, uint256 _version) external authorizedSenderOnly rvmIdOnly(sender) {
 
-        aggregatorAddress = _aggregatorAddress;
+        aggregatorProxy = _aggregatorProxy;
         answer = _answer;
         description_ = _description;
         roundId = _roundId;

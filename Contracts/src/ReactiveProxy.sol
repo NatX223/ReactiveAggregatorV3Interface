@@ -100,7 +100,7 @@ contract ReactiveProxy is IReactive, AbstractPausableReactive {
      * @param log The log record containing the event data from the feed reader
      */
     function react(LogRecord calldata log) external vmOnly {
-        address aggregatorAddress = address(uint160(log.topic_1));
+        address aggregatorProxy = address(uint160(log.topic_1));
         int256 answer = int256(log.topic_2);
 
         (
@@ -118,7 +118,7 @@ contract ReactiveProxy is IReactive, AbstractPausableReactive {
         bytes memory payload = abi.encodeWithSignature(
             "callback(address,address,int256,string,uint80,uint256,uint256,uint256,uint256)",
             address(0),
-            aggregatorAddress,
+            aggregatorProxy,
             answer,
             description,
             roundId,
