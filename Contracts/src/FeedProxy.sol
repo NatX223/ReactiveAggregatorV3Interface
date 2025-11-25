@@ -57,7 +57,19 @@ contract FeedProxy is AbstractCallback {
      * @param _updatedAt Timestamp when the price was last updated
      * @param _version Version number of the source aggregator contract
      */
-    function callback(address sender, address _aggregatorProxy, int256 _answer, string memory _description, uint80 _roundId, uint256 _decimals, uint256 _startedAt, uint256 _updatedAt, uint256 _version) external authorizedSenderOnly rvmIdOnly(sender) {
+    function callback(
+        address sender, 
+        address _aggregatorProxy, 
+        int256 _answer, 
+        string memory _description, 
+        uint80 _roundId, 
+        uint256 _decimals, 
+        uint256 _startedAt, 
+        uint256 _updatedAt, 
+        uint256 _version
+        ) external 
+        authorizedSenderOnly 
+        rvmIdOnly(sender) {
 
         aggregatorProxy = _aggregatorProxy;
         answer = _answer;
