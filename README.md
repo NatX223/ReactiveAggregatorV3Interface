@@ -207,14 +207,7 @@ the destination chain.
         emit feedReceived(roundId, answer);
     }
 ```
-
-| Contract | Purpose | Address |
-|----------|---------|----------|
-| **Chainlink price feed - BTC/USD** | chainlink price aggregator on Sepolia | `0x1b44F3514812d835EB1BDB0acB33d3fA3351Ee43` |
-| **AggReactive** | Event monitor for price updates(AnswerUpdated event) from the price feed aggregator contract | `` |
-| **FeedReader** | Extracts price feed data from aggregators and emits the feedRead event | `` |
-| **ReactiveProxy** | Event monitor for price reading(feedRead event) from the feedReader contract, calls calback on feedProxy | `` |
-| **FeedProxy** | Destination chain price feed data storage via callback, aggregatorV3interface compatible read functions | `` |
+The full code can be found [here](https://github.com/NatX223/ReactiveAggregatorV3Interface/blob/main/Contracts/src/FeedProxy.sol)
 
 ### Transactions
 
