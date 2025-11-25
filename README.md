@@ -10,7 +10,7 @@ This project creates a decentralized bridge for Chainlink price feed data, enabl
 
 The system consists of five core smart contracts working together to create a seamless cross-chain price feed experience:
 
-```
+<!-- ```
 Source Chain                           Reactive Network                 Destination Chain
 ┌────────────────────────┐            ┌──────────────────┐            ┌─────────────────┐
 │  AggregatorV3 contracts│◄───────────┤  AggReactive     │            │                 │
@@ -24,19 +24,20 @@ Source Chain                           Reactive Network                 Destinat
 │ (Data Extractor)│            │ (Cross-chain     │            │  │(Data Store) ││
 └─────────────────┘            │  Coordinator)    │            │  └─────────────┘│
                                └──────────────────┘            └─────────────────┘
-```
+``` -->
 
 ## 📋 Components
 
 ### Core Contracts
 
-| Contract | Purpose | Location |
+| Contract | Purpose | Address |
 |----------|---------|----------|
-| **DummyAggregator** | Mock Chainlink price feed for testing | `src/DummyAggregator.sol` |
-| **FeedReader** | Extracts price data from aggregators | `src/FeedReader.sol` |
-| **ReactiveProxy** | Cross-chain event coordinator | `src/ReactiveProxy.sol` |
-| **AggReactive** | Event monitor for price updates | `src/AggReactive.sol` |
-| **FeedProxy** | Destination chain data storage | `src/FeedProxy.sol` |
+| **DummyAggregator** | Mock Chainlink price feed for testing(for local testing purposes) | `` |
+| **Chainlink price feed - BTC/USD** | chainlink price aggregator on Sepolia | `0x1b44F3514812d835EB1BDB0acB33d3fA3351Ee43` |
+| **AggReactive** | Event monitor for price updates(AnswerUpdated event) from the price feed aggregator contract | `` |
+| **FeedReader** | Extracts price feed data from aggregators and emits the feedRead event | `` |
+| **ReactiveProxy** | Event monitor for price reading(feedRead event) from the feedReader contract, calls calback on feedProxy | `` |
+| **FeedProxy** | Destination chain price feed data storage via callback, aggregatorV3interface compatible read functions | `` |
 
 ### Deployment Scripts
 
