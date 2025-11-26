@@ -209,15 +209,28 @@ the destination chain.
 ```
 The full code can be found [here](https://github.com/NatX223/ReactiveAggregatorV3Interface/blob/main/Contracts/src/FeedProxy.sol)
 
+
+### Contracts
+
+| Contract                                      |  Address                                    | Chain   |
+|-----------------------------------------------|---------------------------------------------|---------|
+| **Chainlink price feed aggregator - BTC/USD** | `0x17Dac87b07EAC97De4E182Fc51C925ebB7E723e2`| sepolia |
+| **AggReactive**                               | `0xa76c05CecE1D5d74ADA1e4746EE14df75603b422`| lasna   |
+| **FeedReader**                                | `0x7B7d298752718b7a8D0B22AfAF509900CaA61F23`| sepolia |
+| **ReactiveProxy**                             | `0xa2f2436C61b1C0B40685691280B846B3B032bF25`| lasna   |
+| **FeedProxy**                                 | `0xAc0723E5A9857A9a9b9503AfD0c0263B8f9bbFA1`| lasna   |
+|-------------------------------------------------------------------------------------------------------|
+
 ### Transactions
 
-| Contract | Function/event | Address | Transaction hash |
-|----------|---------|----------|
-| **Chainlink price feed - BTC/USD** | AnswerUpdated event | `0x17Dac87b07EAC97De4E182Fc51C925ebB7E723e2` | `` |
-| **AggReactive** | Reacting to AnswerUpdated event | `0xa76c05CecE1D5d74ADA1e4746EE14df75603b422` | `` |
-| **FeedReader** | Callback - reading price feed data from aggregators and emitting feedRead event | `0x7B7d298752718b7a8D0B22AfAF509900CaA61F23` | `` |
-| **ReactiveProxy** | Reacting to feedRead event and calling callback event for FeedProxy callback | `0xa2f2436C61b1C0B40685691280B846B3B032bF25` | `` |
-| **FeedProxy** | Callback - storing price feed data | `0xAc0723E5A9857A9a9b9503AfD0c0263B8f9bbFA1` | `` |
+| Function                                       | Transaction hash                              | Chain   |
+|------------------------------------------------|-----------------------------------------------|---------|
+| **AnswerUpdated event** | `0xddf48c68caf2d227d7abf0c2a090676e1673ce07bd26b42b3454b81c2a61337b` | sepolia |
+| **Reacting to AnswerUpdated event** | `0x970d916e094bc639f86b8d83e5452a2ecc226c1d933373e4cb0dce3a201f1b0a` | lasna |
+| **Callback - reading price feed data from aggregators and emitting feedRead event**| `0xe269cb549c4866b48786684233b09525fc8a865ac1a9a574e7ea036fe131813a` | sepolia |
+| **Reacting to feedRead event and calling callback event for FeedProxy callback**| `0xecef8c6e8d63d4cf26d979a86dec912ad997f719f28be5af2eac3d40e88fc219` | lasna   |
+| **Callback - storing price feed data** | `0x3cd85113cacae806796f2b1fb446784f09f46d179cf9e2e0775e3fc9c4bb482e` | lasna   |
+
 
 ## Setup and Deployment
 
