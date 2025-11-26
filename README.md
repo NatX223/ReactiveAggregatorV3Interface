@@ -219,7 +219,6 @@ The full code can be found [here](https://github.com/NatX223/ReactiveAggregatorV
 | **FeedReader**                                | `0x7B7d298752718b7a8D0B22AfAF509900CaA61F23`| sepolia |
 | **ReactiveProxy**                             | `0xa2f2436C61b1C0B40685691280B846B3B032bF25`| lasna   |
 | **FeedProxy**                                 | `0xAc0723E5A9857A9a9b9503AfD0c0263B8f9bbFA1`| lasna   |
-|-------------------------------------------------------------------------------------------------------|
 
 ### Transactions
 
