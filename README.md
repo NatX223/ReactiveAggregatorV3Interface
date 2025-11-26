@@ -213,11 +213,11 @@ The full code can be found [here](https://github.com/NatX223/ReactiveAggregatorV
 
 | Contract | Function/event | Address | Transaction hash |
 |----------|---------|----------|
-| **Chainlink price feed - BTC/USD** | AnswerUpdated event | `` | `` |
-| **AggReactive** | Reacting to AnswerUpdated event | `` | `` |
-| **FeedReader** | Callback - reading price feed data from aggregators and emitting feedRead event | `` | `` |
-| **ReactiveProxy** | Reacting to feedRead event and calling callback event for FeedProxy callback | `` | `` |
-| **FeedProxy** | Callback - storing price feed data | `` | `` |
+| **Chainlink price feed - BTC/USD** | AnswerUpdated event | `0x17Dac87b07EAC97De4E182Fc51C925ebB7E723e2` | `` |
+| **AggReactive** | Reacting to AnswerUpdated event | `0xaB65D336A2EEDa89e765Dd3Ed8EFA1B62cDC3D4e` | `` |
+| **FeedReader** | Callback - reading price feed data from aggregators and emitting feedRead event | `0xe2af6180fc24f9944b4e6C46Df017a570f56527c` | `` |
+| **ReactiveProxy** | Reacting to feedRead event and calling callback event for FeedProxy callback | `0x73a4be5a55150264Ca89870e32c4A5Fe001455eB` | `` |
+| **FeedProxy** | Callback - storing price feed data | `0x87b7cB213a731df3A2Fb348061BaF8Fb055a5e03` | `` |
 
 ## Setup and Deployment
 
@@ -368,4 +368,4 @@ This project is licensed under the MIT License - see the [LICENSE](https://githu
 
 ---
 
-**Built with Reactive and Reactivate**
+**Built with Reactive**

@@ -11,23 +11,23 @@ contract AggReactive is IReactive, AbstractPausableReactive {
     
     /* Address of the reactive system service contract that manages event subscriptions */
     address public chainService;
-    
+
     /* Blockchain network identifier where the price feed aggregator is deployed */
     uint256 private chainId;
-    
+
     /* Event topic hash used to filter and subscribe to specific aggregator events */
     uint256 private eventTopic0;
 
     /* Address of the FeedReader contract that will receive callback notifications */
     address public feedReader;
-    
+
     /* Address of the price feed aggregator contract to monitor for price update events */
     address public priceFeedAggregator;
 
-    /* 
+    /*
      * Event emitted when the contract receives Ether payments
      * @param origin The original transaction initiator (tx.origin)
-     * @param sender The direct sender of the transaction (msg.sender)  
+     * @param sender The direct sender of the transaction (msg.sender)
      * @param value The amount of Ether received in wei
      */
     event Received(
