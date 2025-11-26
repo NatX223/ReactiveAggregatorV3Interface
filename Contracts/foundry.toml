@@ -16,11 +16,21 @@ runs = 256
 runs = 256
 depth = 15
 
-# RPC URLs for testing
+# Parameters for deployments
 [rpc_endpoints]
-sepolia = "${SEPOLIA_RPC_URL}"
-local = "http://127.0.0.1:8545"
-lasna = "${REACTIVE_RPC_URL}"
+sepoliaRPC = "${SEPOLIA_RPC_URL}"
+lasnaRPC = "${LASNA_RPC_URL}"
+[profile.private_key]
+privatekey = "${PRIVATE_KEY}"
+[profile.event_hashes]
+answerUpdated = "${ANSWER_UPDATED_EVENT}"
+feedRead = "${FEED_READ_EVENT}"
+[profile.service_addresses]
+sepoliaService = "${SEPOLIA_SERVICE_ADDRESS}"
+lasnaService = "${LASNA_SERVICE_ADDRESS}"
+[profile.chain_ids]
+sepoliaChainID = "${SEPOLIA_CHAIN_ID}"
+lasnaChainID = "${LASNA_CHAIN_ID}"
 
 # Etherscan API keys
 [etherscan]

@@ -214,10 +214,10 @@ The full code can be found [here](https://github.com/NatX223/ReactiveAggregatorV
 | Contract | Function/event | Address | Transaction hash |
 |----------|---------|----------|
 | **Chainlink price feed - BTC/USD** | AnswerUpdated event | `0x17Dac87b07EAC97De4E182Fc51C925ebB7E723e2` | `` |
-| **AggReactive** | Reacting to AnswerUpdated event | `0xaB65D336A2EEDa89e765Dd3Ed8EFA1B62cDC3D4e` | `` |
-| **FeedReader** | Callback - reading price feed data from aggregators and emitting feedRead event | `0xe2af6180fc24f9944b4e6C46Df017a570f56527c` | `` |
-| **ReactiveProxy** | Reacting to feedRead event and calling callback event for FeedProxy callback | `0x73a4be5a55150264Ca89870e32c4A5Fe001455eB` | `` |
-| **FeedProxy** | Callback - storing price feed data | `0x87b7cB213a731df3A2Fb348061BaF8Fb055a5e03` | `` |
+| **AggReactive** | Reacting to AnswerUpdated event | `0xa76c05CecE1D5d74ADA1e4746EE14df75603b422` | `` |
+| **FeedReader** | Callback - reading price feed data from aggregators and emitting feedRead event | `0x7B7d298752718b7a8D0B22AfAF509900CaA61F23` | `` |
+| **ReactiveProxy** | Reacting to feedRead event and calling callback event for FeedProxy callback | `0xa2f2436C61b1C0B40685691280B846B3B032bF25` | `` |
+| **FeedProxy** | Callback - storing price feed data | `0xAc0723E5A9857A9a9b9503AfD0c0263B8f9bbFA1` | `` |
 
 ## Setup and Deployment
 
@@ -251,33 +251,37 @@ cp Contracts/.env.example Contracts/.env
 
 2. Configure your deployment settings:
 ```env
-PRIVATE_KEY=your_private_key_here
-REACTIVE_RPC_URL=https://lasna-rpc.rnk.dev/
-REACTIVE_SERVICE_ADDRESS=0x0000000000000000000000000000000000fffFfF
-REACTIVE_CHAIN_ID=5318007
-RPC_URL=https://ethereum-sepolia-rpc.publicnode.com
-SERVICE_ADDRESS=0xc9f36411C9897e7F959D99ffca2a0Ba7ee0D7bDA
-CHAIN_ID=11155111
-PRICE_FEED_AGGREGATOR=custom or 0x17Dac87b07EAC97De4E182Fc51C925ebB7E723e2
-AGGREGATOR_PROXY=custom or 0x1b44F3514812d835EB1BDB0acB33d3fA3351Ee43
+PRIVATE_KEY=your_private_key
+LASNA_RPC_URL=https://lasna-rpc.rnk.dev/ or mainnet
+LASNA_SERVICE_ADDRESS=0x0000000000000000000000000000000000fffFfF
+LASNA_CHAIN_ID=5318007
+SEPOLIA_RPC_URL=https://ethereum-sepolia-rpc.publicnode.com or any chainlink supported chain rpc url
+SEPOLIA_SERVICE_ADDRESS=0xc9f36411C9897e7F959D99ffca2a0Ba7ee0D7bDA
+SEPOLIA_CHAIN_ID=11155111 or any chainlink supported chain id
+PRICE_FEED_AGGREGATOR=0x17Dac87b07EAC97De4E182Fc51C925ebB7E723e2 or custom price feed aggregator address on chosen chain
+AGGREGATOR_PROXY=0x1b44F3514812d835EB1BDB0acB33d3fA3351Ee43 or  custom aggregator proxy address on chosen chain
+ANSWER_UPDATED_EVENT=0x0559884fd3a460db3073b7fc896cc77986f16e378210ded43186175bf646fc5f
+FEED_READ_EVENT=0x211b0a6d1ea05edd12db159c3307872cdca106fc791b06a6baad5e124f39070e
 ```
 
 ### Deployment
 
-#### Local Testing
-```bash
-# Deploy to local testnet
-forge script script/DeployLocal.s.sol --fork-url $RPC_URL
-
-# Test with mock data
-forge test -vvv
-```
-
 #### Testnet Deployment
+Deploy the feed reader to sepolia
 ```bash
-# Deploy full system to testnet
-forge script script/Deploy.s.sol --rpc-url $RPC_URL --broadcast --verify
-
+forge create --broadcast --rpc-url sepoliaRPC --private-key $PRIVATE_KEY src/FeedReader.sol:FeedReader --value 0.005ether --constructor-args 0x1b44F3514812d835EB1BDB0acB33d3fA3351Ee43 0xc9f36411C9897e7F959D99ffca2a0Ba7ee0D7bDA
+```
+Deploy the AGGReactive contract to lasna
+```bash
+forge create --broadcast --rpc-url lasnaRPC --private-key $PRIVATE_KEY src/AGGReactive.sol:AGGReactive --value 1ether --constructor-args feed_reader_address 0x17Dac87b07EAC97De4E182Fc51C925ebB7E723e2 0x0559884fd3a460db3073b7fc896cc77986f16e378210ded43186175bf646fc5f 11155111 0x0000000000000000000000000000000000fffFfF
+```
+Deploy the feed proxy to lasna
+```bash
+forge create --broadcast --rpc-url lasnaRPC --private-key $PRIVATE_KEY src/FeedProxy.sol:FeedProxy --value 1ether --constructor-args 0x0000000000000000000000000000000000fffFfF
+```
+Deploy the reactive proxy contract to lasna
+```bash
+forge create --broadcast --rpc-url lasnaRPC --private-key $PRIVATE_KEY src/ReactiveProxy.sol:ReactiveProxy --value 1ether --constructor-args feed_proxy_address feed_reader_address  0x211b0a6d1ea05edd12db159c3307872cdca106fc791b06a6baad5e124f39070e 11155111 5318007 0x0000000000000000000000000000000000fffFfF
 ```
 ## 🧪 Testing
 
@@ -369,3 +373,8 @@ This project is licensed under the MIT License - see the [LICENSE](https://githu
 ---
 
 **Built with Reactive**
+
+0x7B7d298752718b7a8D0B22AfAF509900CaA61F23 - feedreader
+0xa76c05CecE1D5d74ADA1e4746EE14df75603b422 - aggreactive
+0xAc0723E5A9857A9a9b9503AfD0c0263B8f9bbFA1 - feedproxy
+0xa2f2436C61b1C0B40685691280B846B3B032bF25 - ReactiveProxy

@@ -12,8 +12,11 @@ contract ReactiveProxy is IReactive, AbstractPausableReactive {
     /* Address of the reactive system service contract that manages subscriptions */
     address public chainService;
 
-    /* Blockchain network identifier where the feed reader contract is deployed */
-    uint256 private chainId;
+    /* Network identifier where the feed reader contract is deployed */
+    uint256 private originChainId;
+
+    /* Network identifier where the feed proxy contract is deployed */
+    uint256 private destinationChainId;
 
     /* Event topic hash used to filter and subscribe to specific events (e.g., AnswerUpdated) */
     uint256 private eventTopic0;
@@ -42,25 +45,28 @@ contract ReactiveProxy is IReactive, AbstractPausableReactive {
      * @param _feedProxy Address of the FeedProxy contract that will receive callbacks
      * @param _feedReader Address of the FeedReader contract to monitor for events
      * @param _eventTopic0 The event topic hash to subscribe to (typically AnswerUpdated event)
-     * @param _chainId The blockchain network ID where the feed reader is deployed
+     * @param _originChainId The network ID where the feed reader is deployed
+     * @param _destinationChainId The network ID where the feed proxy is deployed
      * @param _service Address of the reactive system service contract
      */
     constructor(
         address _feedProxy,
         address _feedReader,
         uint256 _eventTopic0,
-        uint256 _chainId,
+        uint256 _originChainId,
+        uint256 _destinationChainId,
         address _service
     ) payable {
         feedProxy = _feedProxy;
         feedReader = _feedReader;
         chainService = _service;
         eventTopic0 = _eventTopic0;
-        chainId = _chainId;
+        originChainId = _originChainId;
+        destinationChainId = _destinationChainId;
         service = ISystemContract(payable(_service));
         if (!vm) {
             service.subscribe(
-                _chainId,
+                _originChainId,
                 _feedReader,
                 _eventTopic0,
                 REACTIVE_IGNORE,
@@ -83,7 +89,7 @@ contract ReactiveProxy is IReactive, AbstractPausableReactive {
     {
         Subscription[] memory result = new Subscription[](1);
         result[0] = Subscription(
-            chainId,
+            originChainId,
             address(chainService),
             eventTopic0,
             REACTIVE_IGNORE,
@@ -128,7 +134,7 @@ contract ReactiveProxy is IReactive, AbstractPausableReactive {
             version
         );
 
-        emit Callback(chainId, feedProxy, GAS_LIMIT, payload);
+        emit Callback(destinationChainId, feedProxy, GAS_LIMIT, payload);
     }
 
     /*
