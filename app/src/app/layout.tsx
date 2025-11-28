@@ -10,25 +10,24 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Reactivate - Keep Your Reactive Contracts Alive",
+  title: "ReactiveAggregator - Price feed on any chain",
   description:
-    "Reactivate ensures your Reactive and Callback contracts never go inactive. Monitor balances, automate refills, and stay worry-free with ETH, REACT, or stablecoins.",
+    "ReactiveAggregator provides decentralized price feeds across multiple blockchains. Access real-time cryptocurrency prices with our reliable, cross-chain oracle solution.",
   keywords:
-    "reactive contracts, callback contracts, smart contract monitoring, auto refills, Web3 infrastructure, blockchain automation",
+    "price feeds, oracle, cryptocurrency prices, cross-chain, blockchain data, DeFi infrastructure, real-time prices, decentralized oracle",
   openGraph: {
-    title: "Reactivate - Keep Your Reactive Contracts Alive",
+    title: "ReactiveAggregator - Decentralized Price Feeds",
     description:
-      "A monitoring and refill system for Reactive contracts. Track, top-up, and automate — ensuring your dApps never stop working.",
+      "Access reliable cryptocurrency price data across multiple chains. ReactiveAggregator delivers real-time price feeds for your DeFi applications.",
     images: ["/og-image.png"],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Reactivate - Autonomous Monitoring for Reactive Contracts",
+    title: "ReactiveAggregator - Cross-Chain Price Oracle",
     description:
-      "Never let your Reactive or Callback contracts go inactive. Reactivate tracks and automatically refills balances.",
+      "Get real-time cryptocurrency prices on any blockchain. Reliable, decentralized price feeds for your DeFi projects.",
   },
 };
-
 
 export default function RootLayout({
   children,

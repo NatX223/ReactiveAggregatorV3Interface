@@ -2,6 +2,7 @@ import { NavigationItem, ModuleData, StepData, UseCaseData, TestimonialData } fr
 
 export const NAVIGATION_ITEMS: NavigationItem[] = [
   { label: 'How It Works', href: '#how-it-works' },
+  { label: 'Price Feeds', href: '/price-feeds', external: true },
   { label: 'Use Cases', href: '#use-cases' },
   { label: 'Docs', href: '/docs', external: true }
 ];

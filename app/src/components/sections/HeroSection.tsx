@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
+import Link from "next/link";
 import Button from "@/components/ui/Button";
 import WalletHubAnimation from "@/components/animations/WalletHubAnimation";
 
@@ -43,6 +44,12 @@ const HeroSection: React.FC = () => {
               {/* CTA Buttons */}
               <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start mb-8">
                 <WalletConnectedButton />
+                <Link 
+                  href="/price-feeds"
+                  className="px-6 py-3 border border-blue-600 text-blue-600 dark:text-blue-400 rounded-lg font-medium hover:bg-blue-50 dark:hover:bg-blue-900/20 transition-colors text-center"
+                >
+                  View Price Feeds
+                </Link>
               </div>
 
               {/* Caption */}
@@ -88,6 +95,12 @@ const HeroSection: React.FC = () => {
             {/* CTA Buttons */}
             <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start mb-8">
               <WalletConnectedButton />
+              <Link 
+                href="/price-feeds"
+                className="px-6 py-3 border border-blue-600 text-blue-600 dark:text-blue-400 rounded-lg font-medium hover:bg-blue-50 dark:hover:bg-blue-900/20 transition-colors text-center"
+              >
+                View Price Feeds
+              </Link>
             </div>
 
             {/* Caption */}
