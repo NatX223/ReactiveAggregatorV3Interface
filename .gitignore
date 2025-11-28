@@ -2,3 +2,5 @@ Contracts/.env.example
 Contracts/script/Deploy.s.sol
 Contracts/script/DeployLocal.s.sol
 Contracts/script/DeploymentHelper.s.sol
+Contracts/DEPLOYMENT_AND_TESTING_GUIDE.md
+Contracts/update-test-addresses.sh

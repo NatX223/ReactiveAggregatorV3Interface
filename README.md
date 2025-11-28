@@ -385,8 +385,3 @@ This project is licensed under the MIT License - see the [LICENSE](https://githu
 ---
 
 **Built with Reactive**
-
-0x7B7d298752718b7a8D0B22AfAF509900CaA61F23 - feedreader
-0xa76c05CecE1D5d74ADA1e4746EE14df75603b422 - aggreactive
-0xAc0723E5A9857A9a9b9503AfD0c0263B8f9bbFA1 - feedproxy
-0xa2f2436C61b1C0B40685691280B846B3B032bF25 - ReactiveProxy
