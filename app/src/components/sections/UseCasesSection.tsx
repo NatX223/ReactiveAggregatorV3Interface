@@ -12,7 +12,7 @@ const UseCasesSection: React.FC = () => {
             Real-World Use Cases
           </h2>
           <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
-            See how Reactive ensures critical blockchain infrastructure stays operational. From DeFi protocols to enterprise systems, discover the power of automated monitoring.
+            Discover how ReactiveAggregator enables reliable price feeds across any blockchain. From DeFi protocols to cross-chain applications, unlock the power of universal price data access.
           </p>
         </div>
 

@@ -3,6 +3,7 @@ import { NavigationItem, ModuleData, StepData, UseCaseData, TestimonialData } fr
 export const NAVIGATION_ITEMS: NavigationItem[] = [
   { label: 'How It Works', href: '#how-it-works' },
   { label: 'Price Feeds', href: '/price-feeds', external: true },
+  { label: 'Deploy', href: '/deploy', external: true },
   { label: 'Use Cases', href: '#use-cases' },
   { label: 'Docs', href: '/docs', external: true }
 ];
@@ -32,55 +33,55 @@ export const WORKFLOW_STEPS: StepData[] = [
 
 export const FEATURED_MODULES: ModuleData[] = [
   {
-    id: 'balance-monitor',
-    name: 'Balance Monitor',
-    description: 'Real-time monitoring of reactive contract balances',
-    icon: 'clock',
-    tags: ['Monitoring', 'Real-time']
-  },
-  {
-    id: 'auto-replenish',
-    name: 'Auto Replenish',
-    description: 'Automatic ETH/REACT token transfers to low contracts',
+    id: 'cross-chain-feeds',
+    name: 'Cross-Chain Price Feeds',
+    description: 'Bridge Chainlink price data to any blockchain network',
     icon: 'trending-up',
-    tags: ['Automation', 'Replenishment']
+    tags: ['Cross-Chain', 'Price Feeds']
   },
   {
-    id: 'multi-payment',
-    name: 'Multi-Payment',
-    description: 'Support for stablecoins and credit card payments',
+    id: 'real-time-sync',
+    name: 'Real-Time Synchronization',
+    description: 'Automatic price updates with minimal latency across chains',
+    icon: 'clock',
+    tags: ['Real-time', 'Synchronization']
+  },
+  {
+    id: 'aggregator-compatibility',
+    name: 'AggregatorV3 Compatible',
+    description: 'Drop-in replacement for existing Chainlink integrations',
     icon: 'layers',
-    tags: ['Payments', 'Flexibility']
+    tags: ['Compatibility', 'Standards']
   },
   {
-    id: 'callback-tracker',
-    name: 'Callback Tracker',
-    description: 'Track callback events and contract activity status',
+    id: 'event-driven',
+    name: 'Event-Driven Architecture',
+    description: 'Reactive system that responds to price feed updates automatically',
     icon: 'code',
-    tags: ['Tracking', 'Analytics']
+    tags: ['Events', 'Reactive']
   }
 ];
 
 export const USE_CASES: UseCaseData[] = [
   {
     id: 'defi-protocols',
-    title: 'DeFi Protocol Maintenance',
-    description: 'Keep your DeFi contracts funded and operational 24/7',
-    examples: ['Lending protocol callbacks', 'AMM pool maintenance', 'Yield farming contracts'],
+    title: 'DeFi Protocols on New Chains',
+    description: 'Enable DeFi applications on chains without native Chainlink support',
+    examples: ['Lending protocols with reliable price feeds', 'DEX price oracles', 'Liquidation systems', 'Yield farming with accurate pricing'],
     icon: 'repeat'
   },
   {
-    id: 'reactive-apps',
-    title: 'Reactive Applications',
-    description: 'Ensure your reactive dApps never go offline due to low funds',
-    examples: ['Event-driven contracts', 'Oracle callback systems', 'Cross-chain bridges'],
+    id: 'cross-chain-apps',
+    title: 'Cross-Chain Applications',
+    description: 'Build applications that need consistent price data across multiple chains',
+    examples: ['Multi-chain portfolio trackers', 'Cross-chain arbitrage bots', 'Universal price aggregators', 'Chain-agnostic DeFi protocols'],
     icon: 'trending-up'
   },
   {
-    id: 'enterprise-systems',
-    title: 'Enterprise Blockchain',
-    description: 'Mission-critical contract monitoring for enterprise applications',
-    examples: ['Supply chain tracking', 'Payment processing', 'Identity verification'],
+    id: 'emerging-ecosystems',
+    title: 'Emerging Blockchain Ecosystems',
+    description: 'Bring institutional-grade price feeds to new and specialized blockchains',
+    examples: ['Layer 2 scaling solutions', 'Gaming and NFT platforms', 'Enterprise blockchain networks', 'Specialized DeFi chains'],
     icon: 'users'
   }
 ];
@@ -88,39 +89,39 @@ export const USE_CASES: UseCaseData[] = [
 export const TESTIMONIALS: TestimonialData[] = [
   {
     id: '1',
-    quote: 'Reactive saved our DeFi protocol from going offline. The monitoring is incredibly reliable.',
+    quote: 'ReactiveAggregator enabled us to launch our DeFi protocol on a new L2 with reliable Chainlink price feeds. Game-changing technology.',
     author: 'Sarah Chen',
     role: 'DeFi Protocol Lead',
     type: 'founder'
   },
   {
     id: '2',
-    quote: 'No more 3AM alerts about contract failures. The auto-replenishment just works seamlessly.',
+    quote: 'The cross-chain price synchronization is incredibly fast and reliable. Our arbitrage strategies now work seamlessly across multiple chains.',
     author: 'Marcus Rodriguez',
-    role: 'Smart Contract Developer',
+    role: 'Quantitative Developer',
     type: 'developer'
   },
   {
     id: '3',
-    quote: 'Being able to pay with credit card for contract maintenance is a game-changer for our team.',
+    quote: 'Finally, we can use institutional-grade price feeds on our specialized blockchain. The AggregatorV3 compatibility made integration effortless.',
     author: 'Alex Kim',
-    role: 'Blockchain Engineer',
+    role: 'Blockchain Architect',
     type: 'founder'
   },
   {
     id: '4',
-    quote: 'The callback tracking helped us identify and fix issues before they became critical problems.',
+    quote: 'The real-time price mirroring helped us build a multi-chain portfolio tracker with consistent pricing across all supported networks.',
     author: 'Jennifer Walsh',
-    role: 'Protocol Architect',
+    role: 'Product Manager',
     type: 'developer'
   }
 ];
 
 export const SOCIAL_LINKS = [
-  { name: 'Farcaster', href: 'https://farcaster.xyz/autowall', icon: 'farcaster' },
-  { name: 'Twitter', href: 'https://twitter.com/autowall', icon: 'twitter' },
-  { name: 'GitHub', href: 'https://github.com/autowall', icon: 'github' },
-  { name: 'Discord', href: 'https://discord.gg/autowall', icon: 'discord' }
+  { name: 'GitHub', href: 'https://github.com/NatX223/ReactiveAggregatorV3Interface', icon: 'github' },
+  { name: 'Reactive Network', href: 'https://reactive.network/', icon: 'globe' },
+  { name: 'Chainlink', href: 'https://chain.link/', icon: 'link' },
+  { name: 'Documentation', href: '/docs', icon: 'book' }
 ];
 
 export const FOOTER_SECTIONS = [

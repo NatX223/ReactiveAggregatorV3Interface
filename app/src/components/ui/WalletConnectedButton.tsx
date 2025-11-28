@@ -29,7 +29,7 @@ const WalletConnectedButton: React.FC = () => {
   useEffect(() => {
     if (isConnected && pendingNavigation.current) {
       pendingNavigation.current = false;
-      router.push("/dashboard");
+      router.push("/deploy");
     }
   }, [isConnected, router]);
 
