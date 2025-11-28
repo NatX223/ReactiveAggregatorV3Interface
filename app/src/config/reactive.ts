@@ -21,11 +21,11 @@ export const lasna = defineChain({
 
 export const reactive = defineChain({
     id: 1597,
-    name: 'Reactive Mainnet',
+    name: 'Reactive Testnet',
     nativeCurrency: { name: 'REACT', symbol: 'REACT', decimals: 18 },
     rpcUrls: {
       default: {
-        http: ['https://mainnet-rpc.rnk.dev/'],
+        http: ['https://lasna-rpc.rnk.dev/'],
       },
     },
     blockExplorers: {

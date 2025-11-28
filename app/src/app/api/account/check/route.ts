@@ -23,7 +23,7 @@ const accountFactoryABI = [
     }
 ];
 
-const PROVIDER_URL = 'https://mainnet-rpc.rnk.dev/';
+const PROVIDER_URL = 'https://lasna-rpc.rnk.dev/';
 
 export async function GET(request: Request) {
     try {

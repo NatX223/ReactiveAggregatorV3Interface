@@ -18,7 +18,7 @@ const accountFactoryABI = [
 ];
 
 const FACTORY_MANAGER_PRIVATE_KEY = process.env.FACTORY_MANAGER_PRIVATE_KEY!;
-const PROVIDER_URL = 'https://mainnet-rpc.rnk.dev/';
+const PROVIDER_URL = 'https://lasna-rpc.rnk.dev/';
 
 export async function POST(request: Request) {
   try {

@@ -41,21 +41,21 @@ been updated and then reads the data and serves it to a chain not supported by C
 
 Below is an Imgae depicting the architecture of the ReactiveAggregator project.
 
-<!-- ```
-Source Chain                           Reactive Network                 Destination Chain
-┌────────────────────────┐            ┌──────────────────┐            ┌─────────────────┐
-│  AggregatorV3 contracts│◄───────────┤  AggReactive     │            │                 │
-│  (Price Source)        │            │  (Event Monitor) │            │                 │
-└────────────────────────┘            └──────────────────┘            │                 │
-         │                              │                       │                 │
-         │ AnswerUpdated                │ Callback              │                 │
-         ▼                              ▼                       │                 │
+```
+Source Chain                        Reactive Network           Destination Chain
+┌────────────────────────┐        ┌──────────────────┐         ┌─────────────────┐
+│  AggregatorV3 contracts│◄───────┤  AggReactive     │         │                 │
+│  (Price Source)        │        │  (Event Monitor) │         │                 │
+└────────────────────────┘        └──────────────────┘         │                 │
+         │                              │                      │                 │
+         │ AnswerUpdated                │ Callback             │                 │
+         ▼                              ▼                      │                 │
 ┌─────────────────┐            ┌──────────────────┐            │  ┌─────────────┐│
 │   FeedReader    │◄───────────┤ ReactiveProxy    │───────────►│  │ FeedProxy   ││
 │ (Data Extractor)│            │ (Cross-chain     │            │  │(Data Store) ││
 └─────────────────┘            │  Coordinator)    │            │  └─────────────┘│
                                └──────────────────┘            └─────────────────┘
-``` -->
+```
 
 ### Program Flow
 

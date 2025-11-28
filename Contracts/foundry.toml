@@ -5,7 +5,8 @@ libs = ["lib"]
 test = "test"
 
 remappings = [
-    "@chainlink/contracts/=lib/chainlink-brownie-contracts/contracts/"
+    "@chainlink/contracts/=lib/chainlink-brownie-contracts/contracts/",
+    "forge-std/=lib/forge-std/src/"
 ]
 
 # Test configuration

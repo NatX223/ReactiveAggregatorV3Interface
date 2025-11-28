@@ -28,18 +28,16 @@ const HeroSection: React.FC = () => {
             <div className="text-center lg:text-left">
               <h1 className="text-4xl sm:text-5xl lg:text-6xl font-clash font-bold mb-6 leading-tight">
                 <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
-                  Your Reactive Contracts
+                  Chainlink Price Feeds
                 </span>
                 <br />
                 <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
-                  Alwasys Active.
+                  On Any Chain.
                 </span>
               </h1>
 
               <p className="text-xl text-gray-600 dark:text-gray-300 mb-8 leading-relaxed max-w-2xl">
-                Monitor and automatically replenish your reactive and callback contracts. 
-                Never let your DeFi protocols go offline due to insufficient funds. 
-                Pay with ETH, REACT tokens, stablecoins, or even credit cards.
+                Access chainlink price feeds on chains not supported by Chainlink, using reactive contracts to track and price feeds.
               </p>
 
               {/* CTA Buttons */}
@@ -75,18 +73,16 @@ const HeroSection: React.FC = () => {
           <div className="text-center lg:text-left">
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-clash font-bold mb-6 leading-tight">
               <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
-                Your Reactive Contracts.
+                Chainlink Price Feeds
               </span>
               <br />
               <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
-                Always Active.
+                On Any Chain.
               </span>
             </h1>
 
             <p className="text-xl text-gray-600 dark:text-gray-300 mb-8 leading-relaxed max-w-2xl">
-              Monitor and automatically replenish your reactive and callback contracts. 
-              Never let your DeFi protocols go offline due to insufficient funds. 
-              Pay with ETH, REACT tokens, stablecoins, or even credit cards.
+            Access chainlink price feeds on chains not supported by Chainlink, using reactive contracts to track and price feeds.
             </p>
 
             {/* CTA Buttons */}

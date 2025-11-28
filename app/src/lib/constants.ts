@@ -9,23 +9,23 @@ export const NAVIGATION_ITEMS: NavigationItem[] = [
 export const WORKFLOW_STEPS: StepData[] = [
   {
     id: 1,
-    title: 'Deploy Reactive Contract',
-    description: 'Deploy your callback or reactive contract on the network'
+    title: 'Event Subscription',
+    description: 'AggReactive subscribes to AnswerUpdated events from Chainlink price feeds on supported chains'
   },
   {
     id: 2,
-    title: 'Set Monitoring Rules',
-    description: 'Configure balance thresholds and replenishment amounts'
+    title: 'Data Extraction',
+    description: 'FeedReader extracts comprehensive price data including latest answer, round ID, and metadata'
   },
   {
     id: 3,
-    title: 'Choose Payment Method',
-    description: 'Pay with ETH, REACT tokens, stablecoins, or credit card'
+    title: 'Cross-Chain Relay',
+    description: 'ReactiveProxy processes data and triggers callbacks to destination chains via Reactive Network'
   },
   {
     id: 4,
-    title: 'Auto-Replenishment',
-    description: 'System monitors and refills your contracts automatically'
+    title: 'Data Storage',
+    description: 'FeedProxy receives and stores price data with AggregatorV3Interface compatibility'
   }
 ];
 
@@ -124,18 +124,10 @@ export const SOCIAL_LINKS = [
 
 export const FOOTER_SECTIONS = [
   {
-    title: 'About',
-    links: [
-      { label: 'About', href: '/about' },
-      { label: 'Careers', href: '/careers' },
-      { label: 'Privacy', href: '/privacy' }
-    ]
-  },
-  {
     title: 'Resources',
     links: [
       { label: 'Docs', href: '/docs' },
-      { label: 'GitHub', href: 'https://github.com/autowall' },
+      { label: 'GitHub', href: 'https://github.com/NatX223/ReactiveAggregatorV3Interface' },
       { label: 'API', href: '/api' }
     ]
   }
