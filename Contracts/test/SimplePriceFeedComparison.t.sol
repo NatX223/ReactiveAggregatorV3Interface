@@ -11,8 +11,8 @@ import "../lib/chainlink-brownie-contracts/contracts/src/v0.8/shared/interfaces/
  */
 contract SimplePriceFeedComparison is Test {
     // ============ CONTRACT ADDRESSES ============
-    // Sepolia Chainlink BTC/USD Aggregator 
-    address constant SEPOLIA_AGGREGATOR = 0x17Dac87b07EAC97De4E182Fc51C925ebB7E723e2;
+    // Sepolia Chainlink BTC/USD Aggregator Proxy
+    address constant SEPOLIA_AGGREGATOR = 0x1b44F3514812d835EB1BDB0acB33d3fA3351Ee43;
     
     // Lasna FeedProxy (mirrored data from Sepolia)
     address constant LASNA_FEED_PROXY = 0xAc0723E5A9857A9a9b9503AfD0c0263B8f9bbFA1;
